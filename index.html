@@ -4,14 +4,56 @@
   <meta charset="UTF-8">
   <title>Bot Prediksi Spaceman</title>
   <style>
-    body { background: #0a0a0a; color: #00ff66; font-family: monospace; padding: 20px; }
-    .log { margin-top: 20px; white-space: pre-line; }
+    body {
+      background: #0a0a0a;
+      color: #00ff66;
+      font-family: monospace;
+      padding: 20px;
+    }
+    .log {
+      margin-top: 20px;
+      white-space: pre-line;
+    }
+    #loading {
+      font-size: 18px;
+      color: #ffcc00;
+      margin-bottom: 20px;
+      animation: blink 1s infinite;
+    }
+    @keyframes blink {
+      50% { opacity: 0.3; }
+    }
+    .footer {
+      margin-top: 40px;
+      font-size: 13px;
+      color: #aaa;
+    }
+    .contact-icons img {
+      vertical-align: middle;
+      margin-right: 5px;
+    }
+    button {
+      margin-top: 20px;
+      background: #00ff66;
+      color: #000;
+      padding: 10px 15px;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #00cc55;
+    }
   </style>
 </head>
 <body>
-  <h2>Bot Active.....</h2>
+
+  <img src="https://i.imgur.com/A5WcFVi.png" alt="Logo Spaceman" width="100">
+  <h2>Bot Prediksi Spaceman v1.0</h2>
+
+  <div id="loading">Loading Bot... Please wait.</div>
   <div class="log" id="logBox">
-    _connecting to spaceman server...\n
+    _connecting to spaceman server...
   </div>
 
   <script>
@@ -31,16 +73,38 @@
         const teks = `${prediksi[i].waktu} - Min ${prediksi[i].nilai} ==> Cairkan`;
         logBox.innerText += teks + '\n';
         i++;
-        setTimeout(tampilkanPrediksi, 3000); // Tampil tiap 3 detik
+        setTimeout(tampilkanPrediksi, 3000);
       } else {
         logBox.innerText += "\nPrediksi selesai.\n";
       }
     }
 
     setTimeout(() => {
-      logBox.innerText += "_creating timestamp...\n\n";
+      document.getElementById("loading").style.display = "none";
+      logBox.innerText += "\n_creating timestamp...\n\n";
       tampilkanPrediksi();
-    }, 2000);
+    }, 3000);
   </script>
+
+  <button onclick="alert('Fitur premium belum aktif. Hubungi admin untuk akses penuh.')">
+    Beli Akses Premium
+  </button>
+
+  <div class="contact-icons">
+    <p>
+      <img src="https://img.icons8.com/fluency/48/instagram-new.png" width="20">
+      <a href="https://instagram.com/chans_911" target="_blank" style="color: #00ccff">@chans_911</a>
+    </p>
+    <p>
+      <img src="https://img.icons8.com/color/48/whatsapp--v1.png" width="20">
+      <a href="https://wa.me/6281234567890" target="_blank" style="color: #00ccff">+62 812-3456-7890</a>
+    </p>
+  </div>
+
+  <div class="footer">
+    <hr>
+    &copy; 2025 BotSpaceman | Disclaimer: Prediksi hanya tersedia untuk pengguna terverifikasi.
+  </div>
+
 </body>
 </html>
