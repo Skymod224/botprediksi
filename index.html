@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Bot Prediksi Spaceman</title>
+  <style>
+    body { background: #0a0a0a; color: #00ff66; font-family: monospace; padding: 20px; }
+    .log { margin-top: 20px; white-space: pre-line; }
+  </style>
+</head>
+<body>
+  <h2>Bot Active.....</h2>
+  <div class="log" id="logBox">
+    _connecting to spaceman server...\n
+  </div>
+
+  <script>
+    const prediksi = [
+      { waktu: "15.21", nilai: "100x" },
+      { waktu: "15.28", nilai: "7x" },
+      { waktu: "15.35", nilai: "16x" },
+      { waktu: "15.43", nilai: "5x" },
+      { waktu: "15.48", nilai: "9x" },
+    ];
+
+    const logBox = document.getElementById("logBox");
+
+    let i = 0;
+    function tampilkanPrediksi() {
+      if (i < prediksi.length) {
+        const teks = `${prediksi[i].waktu} - Min ${prediksi[i].nilai} ==> Cairkan`;
+        logBox.innerText += teks + '\n';
+        i++;
+        setTimeout(tampilkanPrediksi, 3000); // Tampil tiap 3 detik
+      } else {
+        logBox.innerText += "\nPrediksi selesai.\n";
+      }
+    }
+
+    setTimeout(() => {
+      logBox.innerText += "_creating timestamp...\n\n";
+      tampilkanPrediksi();
+    }, 2000);
+  </script>
+</body>
+</html>
